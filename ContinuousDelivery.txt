@@ -1,5 +1,4 @@
 Goal: automatic, quality based, repeatable, reliable, continuously improving process
-
 URL: http://www.dbmaestro.com/2015/04/the-8-principles-of-continuous-delivery/
 
 Jez Humble and Dave Farley defined the following principles in their Book “Continuous Delivery”:
@@ -19,4 +18,4 @@ Jez Humble and Dave Farley defined the following principles in their Book “Con
 7. Everyone is responsible – “It works on my station” was never a valid excuse. Responsibility should extend all the way to production. Cultural change can be the hardest to implement. However, having management support and an enthusiastic champion will certainly help.
 
 8. Continuous improvement – of all of the above. IMHO, this principle is especially important for automation. If “practice makes perfect” than automation is the next level – perfect, repeatable, reliable and efficient – perfecting your automation process is a key ingredient to bringing substantial ROI to CD.
-
+    
