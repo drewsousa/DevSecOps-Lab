@@ -1,0 +1,52 @@
+Author: DFS
+Description: Rough notes on docker security
+Please note: These are my very rough notes. I'll be back to clean these up. 
+
+Reference: HackerSploit "Docker Security Essentials" 
+
+Container Host
+ 1. Secure Host
+    a. Hardened server, minimum install, OS and apps patched
+    b. Principle of least privileges. 
+
+ToDo: 
+ CIS benchmarking standards
+ DirtyCon - Ubuntu escape vulnerability
+
+Containers:
+1. Docker basics
+    #>docker images
+    #>docker ps
+    #>docker RIM ID (remove image)
+    #>docker system prune
+
+2. Inside containers
+    a. Ensure local user cannot change to root
+        eg: run chsh -s /usr/sbin/nologin root
+
+    b. Don't run images in privilege mode 
+        eg: Local user should not be able to do something like disabling kernel auditing
+    
+    c. Security Options
+        #>docker run -in user -it --rm 
+        -- Security 0opt=no-new privileges dockerID
+
+    d. Capabilities
+        --cap-drop-all --cap-add NET_ADMIN...
+
+    e. Restrict access to file system
+        eg: run in read only mode
+        #>docker run --read-only -u UserName -it -rm DockerImage /bin/bash
+
+    f. Limit write. If write is required, limit to one or minimal directories
+        #> docker run --read-only --tmpfs /opt -it --rm DockerImageID /bin/bash
+
+    g. Networking
+        1. You use to be able to set intra-network container communication to false. 
+        Now you need to create a bridge network for intra network communication for containers
+
+3. Status
+    #>docker network ls
+    #>docker network inspect #Name
+    #>docker network create --driver bridge -o "com.docker.write.bridge.enable.icc=false"
+        note ICC = intercontainer communication  
